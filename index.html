@@ -1,337 +1,531 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Cake Studio</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delicious Bistro | Restaurant</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<style>
-html{scroll-behavior:smooth;}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
 
-body{
-background:#0f0f0f;
-color:white;
-overflow-x:hidden;
-}
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
 
-section{
-padding:120px 10%;
-position:relative;
-}
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 0;
+    }
 
-h2{
-font-size:44px;
-margin-bottom:25px;
-}
+    /* Header & Navigation */
+    header {
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-p{
-color:#ccc;
-line-height:1.7;
-}
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-a{text-decoration:none;color:inherit;}
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #c49a6c;
+    }
 
-/* NAV */
-header{
-position:fixed;
-width:100%;
-padding:20px 10%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:1000;
-transition:0.4s;
-}
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
 
-header.scrolled{
-background:rgba(0,0,0,0.7);
-backdrop-filter:blur(10px);
-}
+    .nav-links li a {
+      text-decoration: none;
+      color: #333;
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
 
-.logo{
-font-weight:700;
-font-size:24px;
-color:#ff4d6d;
-}
+    .nav-links li a:hover {
+      color: #c49a6c;
+    }
 
-nav a{
-margin-left:30px;
-position:relative;
-}
+    .mobile-menu {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
 
-nav a::after{
-content:'';
-position:absolute;
-bottom:-5px;
-left:0;
-width:0%;
-height:2px;
-background:#ff4d6d;
-transition:0.3s;
-}
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
 
-nav a:hover::after{
-width:100%;
-}
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
 
-/* HERO */
-.hero{
-height:100vh;
-display:flex;
-align-items:center;
-background:
-linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)),
-url('https://images.unsplash.com/photo-1505253213348-cd54c54f3c69?q=80&w=2070') center/cover fixed;
-}
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
 
-.hero h1{
-font-size:70px;
-font-weight:800;
-margin-bottom:20px;
-}
+    .btn {
+      display: inline-block;
+      background: #c49a6c;
+      color: #fff;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
 
-.hero span{color:#ff4d6d;}
+    .btn:hover {
+      background: #a57a52;
+    }
 
-.hero p{max-width:600px;margin-bottom:30px;}
+    /* Reservation Modal (simple popup) */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 200;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
 
-.btn{
-display:inline-block;
-padding:14px 32px;
-border-radius:6px;
-font-weight:600;
-margin-right:15px;
-transition:0.3s;
-}
+    .modal-content {
+      background: #fff;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+    }
 
-.btn-primary{background:#ff4d6d;}
-.btn-outline{border:2px solid white;}
+    .close {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      font-size: 28px;
+      cursor: pointer;
+    }
 
-.btn-outline:hover{
-background:white;
-color:black;
-}
+    .modal-content h2 {
+      margin-bottom: 20px;
+    }
 
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:40px;
-}
+    .modal-content input, .modal-content select, .modal-content textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
 
-/* CARD */
-.card{
-background:#1a1a1a;
-padding:30px;
-border-radius:12px;
-transition:0.3s;
-}
+    /* Sections */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #333;
+    }
 
-.card:hover{
-transform:translateY(-10px);
-}
+    .section-title span {
+      color: #c49a6c;
+    }
 
-.price{
-color:#ff4d6d;
-font-weight:600;
-margin-bottom:10px;
-}
+    /* Menu Section */
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
 
-/* ABOUT */
-.about{
-display:flex;
-gap:60px;
-flex-wrap:wrap;
-align-items:center;
-}
+    .menu-item {
+      background: #f9f9f9;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
 
-.about img{
-max-width:500px;
-width:100%;
-border-radius:12px;
-}
+    .menu-item:hover {
+      transform: translateY(-5px);
+    }
 
-/* STATS */
-.stats{
-background:#181818;
-text-align:center;
-}
+    .menu-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
 
-.stats-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:40px;
-margin-top:50px;
-}
+    .menu-item-content {
+      padding: 20px;
+    }
 
-.stat h3{
-font-size:50px;
-color:#ff4d6d;
-}
+    .menu-item h3 {
+      margin-bottom: 10px;
+    }
 
-/* TESTIMONIAL */
-.testimonials{
-background:#141414;
-}
+    .price {
+      color: #c49a6c;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
 
-.testimonial{
-background:#1f1f1f;
-padding:30px;
-border-radius:12px;
-}
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
 
-/* CTA */
-.cta{
-background:#ff4d6d;
-text-align:center;
-padding:100px 10%;
-}
+    .gallery-grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: opacity 0.3s;
+    }
 
-.cta h2{
-font-size:40px;
-margin-bottom:20px;
-}
+    .gallery-grid img:hover {
+      opacity: 0.8;
+    }
 
-.cta a{
-background:white;
-color:black;
-padding:14px 30px;
-border-radius:6px;
-font-weight:600;
-}
+    /* About */
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
 
-/* FOOTER */
-footer{
-background:#0a0a0a;
-text-align:center;
-padding:60px 10%;
-color:#aaa;
-}
+    .about-text {
+      flex: 1;
+    }
 
-@media(max-width:768px){
-.hero h1{font-size:42px;}
-}
-</style>
+    .about-image {
+      flex: 1;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    /* Contact & Location */
+    .contact-location {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .contact-form, .map {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 8px;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 30px 0;
+    }
+
+    .social-icons {
+      margin: 20px 0;
+    }
+
+    .social-icons a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #c49a6c;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #fff;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        padding: 20px;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        margin: 10px 0;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .about-content {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <nav>
+      <div class="logo">Delicious Bistro</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="mobile-menu" id="mobileMenu">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </header>
 
-<header id="navbar">
-<div class="logo">The Cake Studio</div>
-<nav>
-<a href="#">Home</a>
-<a href="#">Menu</a>
-<a href="#">About</a>
-<a href="#">Contact</a>
-</nav>
-</header>
+  <!-- Hero Section with Reservation Button -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Delicious Bistro</h1>
+      <p>Experience the finest cuisine in town</p>
+      <a href="#" class="btn" id="reserveBtn">Make a Reservation</a>
+    </div>
+  </section>
 
-<section class="hero">
-<div>
-<h1>Delicious <span>Handcrafted</span> Cakes</h1>
-<p>Premium cakes crafted with passion, perfect for birthdays, weddings, and special moments.</p>
-<a href="#" class="btn btn-primary">Order Now</a>
-<a href="#" class="btn btn-outline">Explore Menu</a>
-</div>
-</section>
+  <!-- Reservation Modal -->
+  <div id="reservationModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Book a Table</h2>
+      <form id="reservationForm">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="tel" placeholder="Phone Number" required>
+        <input type="date" required>
+        <input type="time" required>
+        <select>
+          <option>2 People</option>
+          <option>3 People</option>
+          <option>4 People</option>
+          <option>5+ People</option>
+        </select>
+        <textarea placeholder="Special Requests" rows="3"></textarea>
+        <button type="submit" class="btn">Confirm Booking</button>
+      </form>
+      <p style="margin-top:15px; font-size:0.9rem;">*This is a demo form. Connect to a backend or service like OpenTable for real bookings.</p>
+    </div>
+  </div>
 
-<section>
-<h2>Our Signature Cakes</h2>
-<div class="grid">
-<div class="card">
-<h3>Chocolate Truffle</h3>
-<p class="price">$25</p>
-<p>Rich dark chocolate layered with smooth ganache and premium cocoa.</p>
-</div>
-<div class="card">
-<h3>Strawberry Delight</h3>
-<p class="price">$22</p>
-<p>Fresh strawberries blended with light whipped cream frosting.</p>
-</div>
-<div class="card">
-<h3>Red Velvet</h3>
-<p class="price">$24</p>
-<p>Classic red velvet cake with silky cream cheese icing.</p>
-</div>
-<div class="card">
-<h3>Black Forest</h3>
-<p class="price">$26</p>
-<p>Layers of chocolate sponge, cherries and whipped cream.</p>
-</div>
-<div class="card">
-<h3>Vanilla Bliss</h3>
-<p class="price">$20</p>
-<p>Soft vanilla sponge with buttery smooth frosting.</p>
-</div>
-<div class="card">
-<h3>Caramel Crunch</h3>
-<p class="price">$23</p>
-<p>Golden caramel glaze with crunchy toppings and cream layers.</p>
-</div>
-</div>
-</section>
+  <!-- Menu Section -->
+  <section id="menu" class="container">
+    <h2 class="section-title">Our <span>Menu</span></h2>
+    <div class="menu-items">
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Pasta">
+        <div class="menu-item-content">
+          <h3>Italian Pasta</h3>
+          <p>Homemade pasta with fresh tomato sauce and basil.</p>
+          <span class="price">$14.99</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Pizza">
+        <div class="menu-item-content">
+          <h3>Margherita Pizza</h3>
+          <p>Wood-fired pizza with mozzarella and fresh basil.</p>
+          <span class="price">$12.99</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Steak">
+        <div class="menu-item-content">
+          <h3>Grilled Steak</h3>
+          <p>Prime cut with roasted vegetables and herb butter.</p>
+          <span class="price">$24.99</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="about">
-<img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=2070">
-<div>
-<h2>About Our Studio</h2>
-<p>For over 5 years, we have been creating handcrafted cakes that bring joy and sweetness to every celebration. Our passion lies in blending premium ingredients with artistic presentation.</p>
-<br>
-<p>Every cake is baked fresh, designed uniquely, and delivered with love.</p>
-</div>
-</section>
+  <!-- Gallery Section -->
+  <section id="gallery" class="container" style="background:#f9f9f9;">
+    <h2 class="section-title">Photo <span>Gallery</span></h2>
+    <div class="gallery-grid">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Food 1">
+      <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Food 2">
+      <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Food 3">
+      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Food 4">
+    </div>
+  </section>
 
-<section class="stats">
-<h2>Our Sweet Achievements</h2>
-<div class="stats-grid">
-<div class="stat">
-<h3>5+</h3>
-<p>Years Experience</p>
-</div>
-<div class="stat">
-<h3>2000+</h3>
-<p>Happy Customers</p>
-</div>
-<div class="stat">
-<h3>150+</h3>
-<p>Custom Designs</p>
-</div>
-</div>
-</section>
+  <!-- About Section -->
+  <section id="about" class="container">
+    <h2 class="section-title">About <span>Us</span></h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>Delicious Bistro was founded in 2010 with a passion for bringing authentic, flavorful dishes to our community. Our chefs use only the freshest ingredients, sourced locally whenever possible. We believe that great food brings people together, and we're dedicated to providing an unforgettable dining experience.</p>
+        <p>Whether you're joining us for a romantic dinner, family celebration, or casual lunch, our warm atmosphere and attentive service will make you feel right at home.</p>
+      </div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Restaurant interior">
+      </div>
+    </div>
+  </section>
 
-<section class="testimonials">
-<h2>What Our Customers Say</h2>
-<div class="grid">
-<div class="testimonial">
-<p>"Absolutely the best cake I’ve ever tasted. Stunning design and incredible flavor!"</p>
-</div>
-<div class="testimonial">
-<p>"Our wedding cake was perfect. Everyone loved it!"</p>
-</div>
-<div class="testimonial">
-<p>"Fresh, beautiful, and delicious. Highly recommended."</p>
-</div>
-</div>
-</section>
+  <!-- Contact & Location Section -->
+  <section id="contact" class="container" style="background:#f9f9f9;">
+    <h2 class="section-title">Contact & <span>Location</span></h2>
+    <div class="contact-location">
+      <div class="contact-form">
+        <h3>Send us a message</h3>
+        <form>
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+      <div class="map">
+        <h3>Visit us</h3>
+        <!-- Replace src with your Google Maps embed URL -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-73.98510768458414!3d40.74856997932781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+        <p style="margin-top:15px;"><i class="fas fa-map-marker-alt"></i> 123 Main Street, New York, NY 10001</p>
+        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> info@deliciousbistro.com</p>
+      </div>
+    </div>
+  </section>
 
-<section class="cta">
-<h2>Ready to Make Your Celebration Sweeter?</h2>
-<a href="#">Place Your Order Today</a>
-</section>
+  <footer>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+    <p>&copy; 2025 Delicious Bistro. All rights reserved.</p>
+    <p>Open daily: Mon-Sun 11am - 10pm</p>
+  </footer>
 
-<footer>
-<p>© 2026 The Cake Studio. All Rights Reserved.</p>
-</footer>
+  <script>
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navLinks = document.getElementById('navLinks');
 
-<script>
-window.addEventListener("scroll",()=>{
-if(window.scrollY>50){
-document.getElementById("navbar").classList.add("scrolled");
-}else{
-document.getElementById("navbar").classList.remove("scrolled");
-}
-});
-</script>
+    mobileMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
 
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          // Close mobile menu if open
+          navLinks.classList.remove('active');
+        }
+      });
+    });
+
+    // Reservation Modal
+    const modal = document.getElementById('reservationModal');
+    const reserveBtn = document.getElementById('reserveBtn');
+    const closeBtn = document.querySelector('.close');
+
+    reserveBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target == modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Prevent form submission (demo only)
+    document.getElementById('reservationForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you! This is a demo. In a real site, you would connect to a booking system.');
+      modal.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
