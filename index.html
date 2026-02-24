@@ -3,227 +3,234 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oishii | Authentic Japanese Cuisine</title>
+<title>The Cake Studio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+html { scroll-behavior: smooth; }
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 
-html{scroll-behavior:smooth;}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
-body{
-background:#0f0f0f;
-color:white;
-overflow-x:hidden;
+body {
+  background:#111;
+  color:white;
+  overflow-x:hidden;
 }
 
-section{padding:100px 10%;position:relative;}
+section { padding:100px 10%; }
 
-a{text-decoration:none;color:inherit}
+a { text-decoration:none; color:inherit; }
 
-/* ===== Scroll Progress Bar ===== */
+/* ===== Progress Bar ===== */
 #progressBar{
-position:fixed;
-top:0;
-left:0;
-height:4px;
-background:#e63946;
-width:0%;
-z-index:9999;
+  position:fixed;
+  top:0;
+  left:0;
+  height:4px;
+  width:0%;
+  background:#ff4d6d;
+  z-index:9999;
 }
 
-/* ===== Header ===== */
+/* ===== Navbar ===== */
 header{
-position:fixed;
-width:100%;
-padding:20px 10%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:1000;
-transition:0.4s;
+  position:fixed;
+  width:100%;
+  padding:20px 10%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  transition:0.4s;
 }
 
 header.scrolled{
-background:rgba(0,0,0,0.7);
-backdrop-filter:blur(10px);
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(10px);
 }
 
-.logo{font-weight:700;font-size:24px;}
+.logo{
+  font-size:24px;
+  font-weight:700;
+  color:#ff4d6d;
+}
 
 nav a{
-margin-left:30px;
-font-weight:500;
-position:relative;
+  margin-left:30px;
+  position:relative;
 }
 
 nav a::after{
-content:'';
-position:absolute;
-bottom:-5px;
-left:0;
-width:0%;
-height:2px;
-background:#e63946;
-transition:0.3s;
+  content:'';
+  position:absolute;
+  bottom:-5px;
+  left:0;
+  width:0%;
+  height:2px;
+  background:#ff4d6d;
+  transition:0.3s;
 }
 
-nav a:hover::after{width:100%;}
+nav a:hover::after{
+  width:100%;
+}
 
 /* ===== Hero ===== */
 .hero{
-height:100vh;
-display:flex;
-align-items:center;
-background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)),
-url('https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=2070') center/cover fixed;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  background:
+  linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),
+  url('https://images.unsplash.com/photo-1505253213348-cd54c54f3c69?q=80&w=2070') center/cover fixed;
 }
 
-.hero-content{max-width:650px;}
-
-.badge{
-display:inline-block;
-background:#e63946;
-padding:8px 18px;
-border-radius:50px;
-margin-bottom:20px;
-font-size:14px;
+.hero-content{
+  max-width:600px;
 }
 
 .hero h1{
-font-size:60px;
-font-weight:800;
-margin-bottom:20px;
+  font-size:60px;
+  font-weight:800;
+  margin-bottom:20px;
 }
 
-.hero h1 span{color:#e63946;}
+.hero span{
+  color:#ff4d6d;
+}
 
-.hero p{color:#ccc;margin-bottom:30px;}
-
-.buttons{display:flex;gap:20px;}
+.hero p{
+  color:#ddd;
+  margin-bottom:30px;
+}
 
 .btn{
-padding:12px 28px;
-border-radius:5px;
-font-weight:600;
-position:relative;
-overflow:hidden;
+  display:inline-block;
+  padding:12px 28px;
+  border-radius:5px;
+  font-weight:600;
+  margin-right:15px;
+  transition:0.3s;
 }
 
-.btn-primary{background:#e63946;}
-.btn-outline{border:2px solid white;}
-
-.btn-outline:hover{background:white;color:black}
-
-/* Ripple */
-.btn span{
-position:absolute;
-background:rgba(255,255,255,0.4);
-transform:scale(0);
-border-radius:50%;
-animation:ripple 0.6s linear;
+.btn-primary{
+  background:#ff4d6d;
 }
 
-@keyframes ripple{
-to{transform:scale(4);opacity:0;}
+.btn-outline{
+  border:2px solid white;
+}
+
+.btn-outline:hover{
+  background:white;
+  color:black;
 }
 
 /* ===== Fade Animation ===== */
 .fade{
-opacity:0;
-transform:translateY(50px);
-transition:0.8s ease;
+  opacity:0;
+  transform:translateY(50px);
+  transition:0.8s ease;
 }
 
 .fade.show{
-opacity:1;
-transform:translateY(0);
+  opacity:1;
+  transform:translateY(0);
 }
 
-/* ===== Menu ===== */
-.menu{background:#111;}
-.menu h2{text-align:center;font-size:40px;margin-bottom:50px;}
+/* ===== Menu Section ===== */
+.menu{
+  background:#181818;
+}
+
+.menu h2{
+  text-align:center;
+  font-size:40px;
+  margin-bottom:50px;
+}
 
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
 }
 
 .card{
-background:#1a1a1a;
-padding:25px;
-border-radius:10px;
-transition:0.3s;
+  background:#222;
+  padding:25px;
+  border-radius:10px;
+  transition:0.3s;
 }
 
-.card:hover{transform:translateY(-8px);}
+.card:hover{
+  transform:translateY(-8px);
+}
 
-.tag{
-background:#e63946;
-display:inline-block;
-padding:4px 12px;
-border-radius:20px;
-font-size:12px;
-margin-bottom:10px;
+.card h3{
+  margin-bottom:10px;
+}
+
+.price{
+  color:#ff4d6d;
+  font-weight:600;
 }
 
 /* ===== About ===== */
 .about{
-display:flex;
-gap:50px;
-flex-wrap:wrap;
-align-items:center;
+  display:flex;
+  flex-wrap:wrap;
+  gap:50px;
+  align-items:center;
 }
 
 .about img{
-max-width:500px;
-width:100%;
-border-radius:10px;
-transition:1s;
+  width:100%;
+  max-width:450px;
+  border-radius:10px;
+  transition:1s;
 }
 
-.about img.zoom{transform:scale(1.08);}
-
-.about h2{font-size:40px;margin-bottom:20px;}
-.about span{color:#e63946;}
+.about img.zoom{
+  transform:scale(1.08);
+}
 
 .counter{
-font-size:50px;
-font-weight:800;
-color:#e63946;
+  font-size:50px;
+  font-weight:800;
+  color:#ff4d6d;
 }
 
 /* ===== CTA ===== */
 .cta{
-background:#e63946;
-text-align:center;
-padding:80px 10%;
+  background:#ff4d6d;
+  text-align:center;
+  padding:80px 10%;
 }
 
-.cta h2{font-size:35px;margin-bottom:20px;}
+.cta h2{
+  font-size:35px;
+  margin-bottom:20px;
+}
 
 .cta a{
-background:white;
-color:black;
-padding:12px 30px;
-border-radius:5px;
-font-weight:600;
+  background:white;
+  color:black;
+  padding:12px 30px;
+  border-radius:5px;
+  font-weight:600;
 }
 
 /* ===== Footer ===== */
 footer{
-background:#0a0a0a;
-padding:60px 10%;
-text-align:center;
-color:#aaa;
+  background:#0a0a0a;
+  padding:60px 10%;
+  text-align:center;
+  color:#aaa;
 }
 
 @media(max-width:768px){
-.hero h1{font-size:38px;}
+  .hero h1{ font-size:38px; }
 }
-
 </style>
 </head>
 <body>
@@ -231,7 +238,7 @@ color:#aaa;
 <div id="progressBar"></div>
 
 <header id="navbar">
-<div class="logo">OISHII</div>
+<div class="logo">The Cake Studio</div>
 <nav>
 <a href="#">Home</a>
 <a href="#">Menu</a>
@@ -242,56 +249,54 @@ color:#aaa;
 
 <section class="hero">
 <div class="hero-content fade">
-<div class="badge">Authentic Japanese Cuisine</div>
-<h1>Experience the Art of <span>Japanese</span> Cuisine</h1>
-<p>Discover the finest sushi crafted with passion and precision.</p>
-<div class="buttons">
-<a href="#" class="btn btn-primary">Reserve Table</a>
+<h1>Delicious <span>Handcrafted</span> Cakes</h1>
+<p>Experience premium cakes baked with love and passion.</p>
+<a href="#" class="btn btn-primary">Order Now</a>
 <a href="#" class="btn btn-outline">View Menu</a>
-</div>
 </div>
 </section>
 
 <section class="menu fade">
-<h2>Our Special Menu</h2>
+<h2>Our Best Cakes</h2>
 <div class="grid">
 <div class="card">
-<div class="tag">Chef's Choice</div>
-<h3>Dragon Roll - $14</h3>
-<p>Fresh eel and avocado topped with spicy mayo.</p>
+<h3>Chocolate Truffle</h3>
+<p class="price">$25</p>
+<p>Rich chocolate layered with creamy ganache.</p>
 </div>
 <div class="card">
-<div class="tag">Best Seller</div>
-<h3>Salmon Nigiri - $12</h3>
-<p>Premium salmon over seasoned sushi rice.</p>
+<h3>Strawberry Delight</h3>
+<p class="price">$22</p>
+<p>Fresh strawberries with whipped cream frosting.</p>
 </div>
 <div class="card">
-<h3>Tempura Udon - $16</h3>
-<p>Traditional noodle soup with crispy shrimp tempura.</p>
+<h3>Red Velvet</h3>
+<p class="price">$24</p>
+<p>Classic red velvet with smooth cream cheese icing.</p>
 </div>
 </div>
 </section>
 
 <section class="about fade">
-<img src="https://images.unsplash.com/photo-1541542684-4b16b7e20e4f?q=80&w=2070" id="aboutImg">
+<img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=2070" id="aboutImg">
 <div>
-<h2>Over <span><span class="counter" data-target="5">0</span>+</span> Years of Excellence</h2>
-<p>We bring traditional Japanese flavors combined with modern presentation.</p>
+<h2>Over <span><span class="counter" data-target="5">0</span>+</span> Years of Sweet Excellence</h2>
+<p>We craft every cake with precision and passion to make your celebrations unforgettable.</p>
 </div>
 </section>
 
 <section class="cta fade">
-<h2>Ready for an unforgettable dining experience?</h2>
-<a href="#">Book Your Table Now</a>
+<h2>Ready to taste happiness?</h2>
+<a href="#">Place Your Order</a>
 </section>
 
 <footer>
-<p>© 2026 Oishii. All Rights Reserved.</p>
+<p>© 2026 The Cake Studio. All Rights Reserved.</p>
 </footer>
 
 <script>
 
-/* Scroll Progress */
+/* Progress Bar */
 window.addEventListener("scroll",()=>{
 let winScroll=document.body.scrollTop||document.documentElement.scrollTop;
 let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
@@ -310,14 +315,13 @@ document.getElementById("navbar").classList.remove("scrolled");
 
 /* Fade Animation */
 const faders=document.querySelectorAll(".fade");
-const appearOptions={threshold:0.3};
-const appearOnScroll=new IntersectionObserver(function(entries,observer){
+const appearOnScroll=new IntersectionObserver((entries,observer)=>{
 entries.forEach(entry=>{
-if(!entry.isIntersecting) return;
+if(!entry.isIntersecting)return;
 entry.target.classList.add("show");
 observer.unobserve(entry.target);
 });
-},appearOptions);
+},{threshold:0.3});
 faders.forEach(fader=>appearOnScroll.observe(fader));
 
 /* Image Zoom */
@@ -348,18 +352,7 @@ counter.innerText=target;
 update();
 });
 
-/* Ripple */
-document.querySelectorAll(".btn").forEach(button=>{
-button.addEventListener("click",function(e){
-const circle=document.createElement("span");
-circle.style.left=e.offsetX+"px";
-circle.style.top=e.offsetY+"px";
-this.appendChild(circle);
-setTimeout(()=>circle.remove(),600);
-});
-});
-
 </script>
 
 </body>
-  </html>
+</html>
