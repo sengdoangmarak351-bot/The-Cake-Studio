@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Delicious Bistro | Restaurant</title>
+  <title>Oishi Japanese Cuisine | Sushi Selection</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    /* (Same CSS as before – no changes needed) */
     * {
       margin: 0;
       padding: 0;
@@ -119,7 +120,7 @@
       background: #a57a52;
     }
 
-    /* Reservation Modal (simple popup) */
+    /* Reservation Modal */
     .modal {
       display: none;
       position: fixed;
@@ -302,6 +303,16 @@
       color: #c49a6c;
     }
 
+    .footer-links a {
+      color: #c49a6c;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .nav-links {
@@ -341,7 +352,7 @@
 <body>
   <header>
     <nav>
-      <div class="logo">Delicious Bistro</div>
+      <div class="logo">Oishi Japanese Cuisine</div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#menu">Menu</a></li>
@@ -358,9 +369,10 @@
   <!-- Hero Section with Reservation Button -->
   <section id="home" class="hero">
     <div class="hero-content">
-      <h1>Welcome to Delicious Bistro</h1>
-      <p>Experience the finest cuisine in town</p>
+      <h1>Welcome to Oishi</h1>
+      <p>Sushi Selection • Authentic Japanese Cuisine</p>
       <a href="#" class="btn" id="reserveBtn">Make a Reservation</a>
+      <p style="margin-top:15px; font-size:1rem;">Reservations recommended</p>
     </div>
   </section>
 
@@ -369,6 +381,7 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2>Book a Table</h2>
+      <p style="margin-bottom:15px;"><em>Reservations are recommended – we look forward to serving you!</em></p>
       <form id="reservationForm">
         <input type="text" placeholder="Your Name" required>
         <input type="email" placeholder="Your Email" required>
@@ -417,6 +430,7 @@
         </div>
       </div>
     </div>
+    <!-- Note: Replace with actual Japanese dishes later -->
   </section>
 
   <!-- Gallery Section -->
@@ -435,8 +449,8 @@
     <h2 class="section-title">About <span>Us</span></h2>
     <div class="about-content">
       <div class="about-text">
-        <p>Delicious Bistro was founded in 2010 with a passion for bringing authentic, flavorful dishes to our community. Our chefs use only the freshest ingredients, sourced locally whenever possible. We believe that great food brings people together, and we're dedicated to providing an unforgettable dining experience.</p>
-        <p>Whether you're joining us for a romantic dinner, family celebration, or casual lunch, our warm atmosphere and attentive service will make you feel right at home.</p>
+        <p>Oishi brings the finest Japanese cuisine to Tura. Our sushi selection is crafted with fresh ingredients and authentic techniques. Whether you're a sushi lover or exploring Japanese flavors for the first time, we promise a delightful experience.</p>
+        <p>We are open Monday through Saturday, from 10:30 AM to 8:30 PM (kitchen closes at 8:30 PM). Reservations are recommended to ensure you get a table at your preferred time.</p>
       </div>
       <div class="about-image">
         <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Restaurant interior">
@@ -459,11 +473,15 @@
       </div>
       <div class="map">
         <h3>Visit us</h3>
-        <!-- Replace src with your Google Maps embed URL -->
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-73.98510768458414!3d40.74856997932781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
-        <p style="margin-top:15px;"><i class="fas fa-map-marker-alt"></i> 123 Main Street, New York, NY 10001</p>
-        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
-        <p><i class="fas fa-envelope"></i> info@deliciousbistro.com</p>
+        <!-- Address from screenshot -->
+        <p><i class="fas fa-map-marker-alt"></i> OISHII, Dakopgre, Road, near Rhythm School of Music, Matchakol, Tura, Meghalaya 794101</p>
+        <p><i class="fas fa-phone"></i> +91 60330 91243</p>
+        <p><i class="fas fa-envelope"></i> info@oishi.com</p>
+        <p><i class="far fa-clock"></i> Monday – Saturday: 10:30 AM – 8:30 PM (Kitchen closes at 8:30 PM)</p>
+        <!-- Clickable Google Maps link (opens in new tab) -->
+        <p><a href="https://maps.google.com/?q=OISHII+Dakopgre+Road+near+Rhythm+School+of+Music+Matchakol+Tura+Meghalaya+794101" target="_blank" class="btn" style="margin-top:15px; display:inline-block;">View on Google Maps</a></p>
+        <!-- Optional: replace with actual embed if you have one -->
+        <!-- <iframe src="YOUR_GOOGLE_MAPS_EMBED_URL" allowfullscreen="" loading="lazy"></iframe> -->
       </div>
     </div>
   </section>
@@ -474,8 +492,11 @@
       <a href="#"><i class="fab fa-instagram"></i></a>
       <a href="#"><i class="fab fa-twitter"></i></a>
     </div>
-    <p>&copy; 2025 Delicious Bistro. All rights reserved.</p>
-    <p>Open daily: Mon-Sun 11am - 10pm</p>
+    <p>&copy; 2026 Oishi. All rights reserved. | Crafted with ❤️ for Japanese cuisine lovers</p>
+    <p class="footer-links">
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </p>
+    <p>Open: Monday – Saturday, 10:30 AM – 8:30 PM</p>
   </footer>
 
   <script>
