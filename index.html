@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oishi Japanese Cuisine | Sushi Selection</title>
+  <title>Oishi Japanese Cuisine | Authentic Japanese & Korean</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* (Same CSS as before – no changes needed) */
     * {
       margin: 0;
       padding: 0;
@@ -22,7 +21,7 @@
       line-height: 1.6;
     }
 
-    h1, h2, h3 {
+    h1, h2, h3, h4 {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
     }
@@ -52,11 +51,10 @@
       margin: 0 auto;
     }
 
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #c49a6c;
+    .logo img {
+      height: 60px;
+      width: auto;
+      display: block;
     }
 
     .nav-links {
@@ -114,6 +112,8 @@
       font-weight: 600;
       cursor: pointer;
       transition: background 0.3s;
+      border: none;
+      font-size: 1rem;
     }
 
     .btn:hover {
@@ -174,55 +174,60 @@
       color: #c49a6c;
     }
 
-    /* Menu Section */
+    /* Menu Styles */
+    .menu-category {
+      margin-bottom: 40px;
+    }
+
+    .menu-category h3 {
+      font-size: 2rem;
+      color: #c49a6c;
+      border-bottom: 2px solid #c49a6c;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
     .menu-items {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
     }
 
     .menu-item {
       background: #f9f9f9;
+      padding: 15px;
       border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    .menu-item:hover {
-      transform: translateY(-5px);
+    .menu-item h4 {
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
     }
 
-    .menu-item img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .menu-item-content {
-      padding: 20px;
-    }
-
-    .menu-item h3 {
-      margin-bottom: 10px;
-    }
-
-    .price {
+    .menu-item .price {
       color: #c49a6c;
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+    }
+
+    .menu-item p {
+      font-size: 0.95rem;
+      color: #666;
     }
 
     /* Gallery */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
     }
 
     .gallery-grid img {
       width: 100%;
-      height: 250px;
+      height: 200px;
       object-fit: cover;
       border-radius: 8px;
       transition: opacity 0.3s;
@@ -280,6 +285,15 @@
       border-radius: 8px;
     }
 
+    .info-item {
+      margin-bottom: 15px;
+    }
+
+    .info-item i {
+      color: #c49a6c;
+      width: 25px;
+    }
+
     /* Footer */
     footer {
       background: #222;
@@ -321,7 +335,7 @@
         width: 100%;
         background: #fff;
         position: absolute;
-        top: 70px;
+        top: 80px;
         left: 0;
         padding: 20px;
         box-shadow: 0 10px 10px rgba(0,0,0,0.1);
@@ -352,7 +366,9 @@
 <body>
   <header>
     <nav>
-      <div class="logo">Oishi Japanese Cuisine</div>
+      <div class="logo">
+        <img src="logo.png" alt="Oishi Logo">
+      </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#menu">Menu</a></li>
@@ -366,11 +382,11 @@
     </nav>
   </header>
 
-  <!-- Hero Section with Reservation Button -->
+  <!-- Hero Section -->
   <section id="home" class="hero">
     <div class="hero-content">
       <h1>Welcome to Oishi</h1>
-      <p>Sushi Selection • Authentic Japanese Cuisine</p>
+      <p>Authentic Japanese & Korean Cuisine in Tura</p>
       <a href="#" class="btn" id="reserveBtn">Make a Reservation</a>
       <p style="margin-top:15px; font-size:1rem;">Reservations recommended</p>
     </div>
@@ -397,50 +413,127 @@
         <textarea placeholder="Special Requests" rows="3"></textarea>
         <button type="submit" class="btn">Confirm Booking</button>
       </form>
-      <p style="margin-top:15px; font-size:0.9rem;">*This is a demo form. Connect to a backend or service like OpenTable for real bookings.</p>
+      <p style="margin-top:15px; font-size:0.9rem;">*Demo form – connect to a real booking service for production.</p>
     </div>
   </div>
 
-  <!-- Menu Section -->
+  <!-- Full Menu Section (from PDF) -->
   <section id="menu" class="container">
     <h2 class="section-title">Our <span>Menu</span></h2>
-    <div class="menu-items">
-      <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Pasta">
-        <div class="menu-item-content">
-          <h3>Italian Pasta</h3>
-          <p>Homemade pasta with fresh tomato sauce and basil.</p>
-          <span class="price">$14.99</span>
-        </div>
-      </div>
-      <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Pizza">
-        <div class="menu-item-content">
-          <h3>Margherita Pizza</h3>
-          <p>Wood-fired pizza with mozzarella and fresh basil.</p>
-          <span class="price">$12.99</span>
-        </div>
-      </div>
-      <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Steak">
-        <div class="menu-item-content">
-          <h3>Grilled Steak</h3>
-          <p>Prime cut with roasted vegetables and herb butter.</p>
-          <span class="price">$24.99</span>
-        </div>
+
+    <!-- Appetizers -->
+    <div class="menu-category">
+      <h3>Appetizers</h3>
+      <div class="menu-items">
+        <div class="menu-item"><h4>Yasai Tempura <span class="price">₹160/-</span></h4><p>Deep fried Vegetables</p></div>
+        <div class="menu-item"><h4>Tempura Moriawase <span class="price">₹330/-</span></h4><p>Deep fried assortment of seafood and vegetables</p></div>
+        <div class="menu-item"><h4>Ebi Tempura <span class="price">₹300/-</span></h4><p>Deep-fried Shrimp in tempura batter</p></div>
+        <div class="menu-item"><h4>Okonomi Yaki <span class="price">₹200/350/450/-</span></h4><p>Savory Japanese Pancake with Veg/meat/seafood</p></div>
+        <div class="menu-item"><h4>Salmon Sashimi <span class="price">₹590/-</span></h4><p>Thinly sliced raw salmon with soy, wasabi & garnishes</p></div>
+        <div class="menu-item"><h4>Grilled Salmon <span class="price">₹650/-</span></h4><p>Grilled salmon fillet</p></div>
+        <div class="menu-item"><h4>Yakitori <span class="price">₹340/-</span></h4><p>Grilled chicken skewers</p></div>
+        <div class="menu-item"><h4>Tori Karaage <span class="price">₹340/-</span></h4><p>Japanese fried chicken</p></div>
+        <div class="menu-item"><h4>Shoga Yaki <span class="price">₹350/-</span></h4><p>Thinly sliced sautéed pork with ginger sauce</p></div>
       </div>
     </div>
-    <!-- Note: Replace with actual Japanese dishes later -->
+
+    <!-- Sushi -->
+    <div class="menu-category">
+      <h3>Sushi</h3>
+      <div class="menu-items">
+        <div class="menu-item"><h4>Kappamaki <span class="price">₹270/-</span></h4><p>Cucumber sushi roll</p></div>
+        <div class="menu-item"><h4>Tamago Maki <span class="price">₹270/-</span></h4><p>Japanese rolled omelette</p></div>
+        <div class="menu-item"><h4>Ebi Tempura Maki <span class="price">₹340/-</span></h4><p>Crispy shrimp roll with vinegared rice & nori</p></div>
+        <div class="menu-item"><h4>Kanikamamaki <span class="price">₹340/-</span></h4><p>Imitation crab stick sushi roll</p></div>
+        <div class="menu-item"><h4>Tamago Nigiri <span class="price">₹290/-</span></h4><p>Sushi rice topped with cooked egg, wrapped with nori</p></div>
+        <div class="menu-item"><h4>Ebi Nigiri <span class="price">₹370/-</span></h4><p>Hand-pressed rice topped with shrimp</p></div>
+        <div class="menu-item"><h4>Salmon Nigiri <span class="price">₹480/-</span></h4><p>Hand-pressed rice topped with raw salmon</p></div>
+        <div class="menu-item"><h4>Kanikama Nigiri <span class="price">₹450/-</span></h4><p>Hand-pressed rice topped with imitation crab stick</p></div>
+        <div class="menu-item"><h4>Kanikama Sashimi <span class="price">₹450/-</span></h4><p>Sashimi-style imitation crab</p></div>
+      </div>
+    </div>
+
+    <!-- Donburi (Rice Bowls) -->
+    <div class="menu-category">
+      <h3>Donburi (Rice Bowls)</h3>
+      <div class="menu-items">
+        <div class="menu-item"><h4>Katsu Don <span class="price">₹380/-</span></h4><p>Breaded pork cutlet simmered with egg & onions</p></div>
+        <div class="menu-item"><h4>Oyaka Don <span class="price">₹380/-</span></h4><p>Chicken and egg simmered in savory sauce</p></div>
+        <div class="menu-item"><h4>Tamago Don <span class="price">₹340/-</span></h4><p>Fluffy savory eggs over rice</p></div>
+        <div class="menu-item"><h4>Ebi Don <span class="price">₹400/-</span></h4><p>Crispy deep-fried shrimp over rice</p></div>
+        <div class="menu-item"><h4>Sakana Don <span class="price">₹370/-</span></h4><p>Fish topped rice bowl</p></div>
+        <div class="menu-item"><h4>Buta Don <span class="price">₹370/-</span></h4><p>Simmered or grilled pork in sweet-savory sauce</p></div>
+        <div class="menu-item"><h4>Ten Don <span class="price">₹380/-</span></h4><p>Tempura served on a bed of rice</p></div>
+        <div class="menu-item"><h4>Teriyaki Don <span class="price">₹380/-</span></h4><p>Rice bowl topped with teriyaki-glazed ingredients</p></div>
+      </div>
+    </div>
+
+    <!-- Ramen -->
+    <div class="menu-category">
+      <h3>Ramen (Japanese Noodle Soup)</h3>
+      <div class="menu-items">
+        <div class="menu-item"><h4>Shoyu Ramen <span class="price">₹390/-</span></h4></div>
+        <div class="menu-item"><h4>Shio Ramen <span class="price">₹390/-</span></h4></div>
+        <div class="menu-item"><h4>Miso Ramen <span class="price">₹390/-</span></h4></div>
+        <div class="menu-item"><h4>Chashu Ramen <span class="price">₹390/-</span></h4></div>
+        <div class="menu-item"><h4>Tan Tan Ramen <span class="price">₹410/-</span></h4></div>
+        <div class="menu-item"><h4>Tonkotsu Ramen <span class="price">₹410/-</span></h4></div>
+        <div class="menu-item"><h4>Nabeyaki Ramen <span class="price">₹450/-</span></h4></div>
+      </div>
+    </div>
+
+    <!-- Soup -->
+    <div class="menu-category">
+      <h3>Soup</h3>
+      <div class="menu-items">
+        <div class="menu-item"><h4>Miso Soup <span class="price">₹170/-</span></h4></div>
+        <div class="menu-item"><h4>Ebi Soup <span class="price">₹230/-</span></h4></div>
+      </div>
+    </div>
+
+    <!-- Specials / Combos -->
+    <div class="menu-category">
+      <h3>Specials & Combos</h3>
+      <div class="menu-items">
+        <div class="menu-item"><h4>Sushi Boat <span class="price">₹1,200/-</span></h4><p>Assorted sushi platter</p></div>
+        <div class="menu-item"><h4>Combo of Yakiniku & Nabe <span class="price">₹1,800/-</span></h4><p>Japanese hotpot with grilled meat</p></div>
+        <div class="menu-item"><h4>Seafood Platter <span class="price">₹3,500/-</span></h4><p>Chef's special seafood mix with sautéed vegetables</p></div>
+      </div>
+    </div>
+
+    <!-- Korean Cuisine -->
+    <div class="menu-category">
+      <h3>Korean Cuisine</h3>
+      <div class="menu-items">
+        <div class="menu-item"><h4>Bibimbap (Chicken/Pork) <span class="price">₹300/320/-</span></h4></div>
+        <div class="menu-item"><h4>Korean Fried Chicken <span class="price">₹300/-</span></h4></div>
+        <div class="menu-item"><h4>Ramyeon (Chicken/Pork) <span class="price">₹300/320/-</span></h4></div>
+        <div class="menu-item"><h4>Kimbab (Veg/Non-veg) <span class="price">₹280/300/-</span></h4></div>
+        <div class="menu-item"><h4>Kimchi <span class="price">₹200/-</span></h4></div>
+        <div class="menu-item"><h4>Bulgogi (Chicken/Pork) <span class="price">₹320/350/-</span></h4></div>
+        <div class="menu-item"><h4>Japchae <span class="price">₹280/-</span></h4></div>
+        <div class="menu-item"><h4>Jajangmyeon (Chicken/Pork) <span class="price">₹320/350/-</span></h4></div>
+      </div>
+    </div>
   </section>
 
-  <!-- Gallery Section -->
+  <!-- Gallery Section (with your food photos) -->
   <section id="gallery" class="container" style="background:#f9f9f9;">
     <h2 class="section-title">Photo <span>Gallery</span></h2>
     <div class="gallery-grid">
-      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Food 1">
-      <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Food 2">
-      <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Food 3">
-      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Food 4">
+      <img src="tempura.jpg" alt="Tempura">
+      <img src="yakitori1.jpg" alt="Yakitori">
+      <img src="tori-karaage.jpg" alt="Tori Karaage">
+      <img src="tamago-maki.jpg" alt="Tamago Maki">
+      <img src="kanikama-nigiri.jpg" alt="Kanikama Nigiri">
+      <img src="kanikamaki.jpg" alt="Kanikamaki">
+      <img src="shoyu-ramen.jpg" alt="Shoyu Ramen">
+      <img src="tonkotsu-ramen.jpg" alt="Tonkotsu Ramen">
+      <img src="sushi.jpg" alt="Sushi">
+      <img src="teriyaki-chicken.jpg" alt="Teriyaki Chicken">
+      <img src="matcha-icecream.jpg" alt="Matcha Ice Cream">
+      <img src="mochi-icecream.jpg" alt="Mochi Ice Cream">
+      <!-- Add more as needed -->
     </div>
   </section>
 
@@ -449,11 +542,11 @@
     <h2 class="section-title">About <span>Us</span></h2>
     <div class="about-content">
       <div class="about-text">
-        <p>Oishi brings the finest Japanese cuisine to Tura. Our sushi selection is crafted with fresh ingredients and authentic techniques. Whether you're a sushi lover or exploring Japanese flavors for the first time, we promise a delightful experience.</p>
+        <p>Oishi brings the finest Japanese and Korean cuisine to Tura. Our menu features authentic dishes made from fresh ingredients, from sizzling yakitori and crispy tempura to hearty ramen and flavorful bibimbap. Whether you're a sushi lover or exploring Asian flavors for the first time, we promise a delightful experience.</p>
         <p>We are open Monday through Saturday, from 10:30 AM to 8:30 PM (kitchen closes at 8:30 PM). Reservations are recommended to ensure you get a table at your preferred time.</p>
       </div>
       <div class="about-image">
-        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Restaurant interior">
+        <img src="restaurant.jpg" alt="Oishi Restaurant">
       </div>
     </div>
   </section>
@@ -473,15 +566,11 @@
       </div>
       <div class="map">
         <h3>Visit us</h3>
-        <!-- Address from screenshot -->
-        <p><i class="fas fa-map-marker-alt"></i> OISHII, Dakopgre, Road, near Rhythm School of Music, Matchakol, Tura, Meghalaya 794101</p>
-        <p><i class="fas fa-phone"></i> +91 60330 91243</p>
-        <p><i class="fas fa-envelope"></i> info@oishi.com</p>
-        <p><i class="far fa-clock"></i> Monday – Saturday: 10:30 AM – 8:30 PM (Kitchen closes at 8:30 PM)</p>
-        <!-- Clickable Google Maps link (opens in new tab) -->
+        <div class="info-item"><i class="fas fa-map-marker-alt"></i> OISHII, Dakopgre, Road, near Rhythm School of Music, Matchakol, Tura, Meghalaya 794101</div>
+        <div class="info-item"><i class="fas fa-phone"></i> +91 60330 91243</div>
+        <div class="info-item"><i class="fas fa-envelope"></i> info@oishi.com</div>
+        <div class="info-item"><i class="far fa-clock"></i> Monday – Saturday: 10:30 AM – 8:30 PM (Kitchen closes at 8:30 PM)</div>
         <p><a href="https://maps.google.com/?q=OISHII+Dakopgre+Road+near+Rhythm+School+of+Music+Matchakol+Tura+Meghalaya+794101" target="_blank" class="btn" style="margin-top:15px; display:inline-block;">View on Google Maps</a></p>
-        <!-- Optional: replace with actual embed if you have one -->
-        <!-- <iframe src="YOUR_GOOGLE_MAPS_EMBED_URL" allowfullscreen="" loading="lazy"></iframe> -->
       </div>
     </div>
   </section>
@@ -515,7 +604,6 @@
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
           target.scrollIntoView({ behavior: 'smooth' });
-          // Close mobile menu if open
           navLinks.classList.remove('active');
         }
       });
