@@ -51,10 +51,24 @@
       margin: 0 auto;
     }
 
-    .logo img {
-      height: 160px;
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-img {
+      height: 100px;
       width: auto;
       display: block;
+    }
+
+    .site-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #333;
+      letter-spacing: 1px;
     }
 
     .nav-links {
@@ -329,6 +343,15 @@
 
     /* Responsive */
     @media (max-width: 768px) {
+      .logo-title {
+        gap: 8px;
+      }
+      .site-title {
+        font-size: 1.2rem;
+      }
+      .logo-img {
+        height: 45px;
+      }
       .nav-links {
         display: none;
         flex-direction: column;
@@ -366,8 +389,9 @@
 <body>
   <header>
     <nav>
-      <div class="logo">
-        <img src="logo.png" alt="Oishi Logo">
+      <div class="logo-title">
+        <img src="logo.png" alt="Oishi Logo" class="logo-img">
+        <span class="site-title">Oishi Japanese Cuisine</span>
       </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
@@ -546,7 +570,7 @@
         <p>We are open Monday through Saturday, from 10:30 AM to 8:30 PM (kitchen closes at 8:30 PM). Reservations are recommended to ensure you get a table at your preferred time.</p>
       </div>
       <div class="about-image">
-        <img src="restaurant.jpg" alt="Oishi Restaurant">
+        <img src="franchise.jpg" alt="Oishi Restaurant">
       </div>
     </div>
   </section>
@@ -637,4 +661,4 @@
     });
   </script>
 </body>
-</html>
+          </html>
